@@ -1,15 +1,32 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import styled from "styled-components";
+import Spacer from "../Base/Spacer";
+import ResponseCard, { CardProps } from "../ResponseCard";
 
-interface List {
-  request: string;
-  response: string;
-}
+const StyledInput = styled.input`
+  background: none;
+  font-family: inherit;
+  padding: 0.375rem 0.75rem;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  background-clip: padding-box;
+  border: 0.5px solid rgba(32, 34, 35, 0.5);
+  color: rgba(32, 34, 35, 1);
+  width: 100%;
+
+  :focus {
+    outline: none;
+    border: 0.5px solid rgba(32, 34, 35, 1);
+    color: rgba(32, 34, 35, 1);
+  }
+`;
 
 const Playground: React.FC = () => {
   const [prompt, setPrompt] = useState("");
 
-  const empty: List[] = [];
+  const empty: CardProps[] = [];
   const [list, setList] = useState(empty);
 
   const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
@@ -44,22 +61,47 @@ const Playground: React.FC = () => {
       });
   };
 
+  const StyledButton = styled.button`
+    background-color: rgba(0, 128, 96, 1);
+    color: white;
+    outline: none;
+    font-family: inherit;
+    padding: 0.375rem 0.75rem;
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 150px;
+    width: auto;
+    border: none;
+    width: 100%;
+
+    &:hover {
+      background-color: rgba(0, 110, 82, 1);
+    }
+  `;
+
   return (
     <>
+      <Spacer height={48} />
       <Form onSubmit={handleSubmit}>
-        <input
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="enter a prompt..."
-        />
-        <Button type="submit">beep boop</Button>
+        <Row>
+          <Col md={8}>
+            <StyledInput
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="hit [tab] for ideas"
+            />
+          </Col>
+          <Col md={4}>
+            <StyledButton type="submit">Submit</StyledButton>
+          </Col>
+        </Row>
       </Form>
-      {list.map((item: List) => (
-        <p>
-          {item.request}
-          <br />
-          {item.response}
-        </p>
+      <Spacer height={32} />
+      {list.map((item: CardProps) => (
+        <>
+          <ResponseCard {...item} />
+          <Spacer height={16} />
+        </>
       ))}
     </>
   );

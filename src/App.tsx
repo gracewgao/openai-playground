@@ -8,15 +8,22 @@ const Page = styled.div`
   min-height: 100vh;
   height: 100%;
   overflow-y: auto;
-  padding: 48px;
+
+  font-family: San Francisco, Roboto;
+  font-weight: 300;
+  background-color: rgba(246, 246, 247, 1);
+`;
+
+const ThinContainer = styled(Container)`
+  max-width: 600px;
 `;
 
 function App() {
   return (
     <Page>
-      <Container>
+      <ThinContainer>
         <Playground />
-      </Container>
+      </ThinContainer>
     </Page>
   );
 }
