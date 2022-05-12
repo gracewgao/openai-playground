@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef } from "react";
+import React from "react";
 import styled from "styled-components";
 
 export interface CardProps {

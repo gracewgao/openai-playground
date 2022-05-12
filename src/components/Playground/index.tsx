@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Col, Form, Row } from "react-bootstrap";
 import styled from "styled-components";
 import Spacer from "../Base/Spacer";
 import ResponseCard, { CardProps } from "../ResponseCard";
