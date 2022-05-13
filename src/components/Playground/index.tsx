@@ -70,8 +70,20 @@ const Playground: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   const generatePrompt = () => {
-    const verbs = ["sing me a song", "write me a poem", "tell me a joke", "perform a dialogue", "tell me a secret"];
-    const subjects = ["the robot apocalypse", "love", "geese", "breakfast foods", "cats in space"];
+    const verbs = [
+      "sing me a song",
+      "write me a poem",
+      "tell me a joke",
+      "perform a dialogue",
+      "tell me a secret",
+    ];
+    const subjects = [
+      "the robot apocalypse",
+      "love",
+      "geese",
+      "breakfast foods",
+      "cats in space",
+    ];
     const random = `${verbs[Math.floor(Math.random() * 5)]} about ${
       subjects[Math.floor(Math.random() * 5)]
     }`;
@@ -126,8 +138,10 @@ const Playground: React.FC = () => {
           <Col md={8}>
             <StyledInput
               value={prompt}
+              type="text"
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="Enter a prompt"
+              aria-label="Enter a prompt"
             />
             <Spacer height={8} />
           </Col>
