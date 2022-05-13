@@ -8,7 +8,7 @@ export interface CardProps {
 
 const Card = styled.div`
   border-radius: 0.5rem;
-  shadow-box: 0 0 5px rgba(23, 24, 24, 0.05), 0 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 5px rgba(23, 24, 24, 0.05), 0 1px 2px rgba(0, 0, 0, 0.15);
   background-color: white;
   padding: 24px;
 `;
